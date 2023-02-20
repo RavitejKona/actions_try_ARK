@@ -1,0 +1,8 @@
+name: CI
+on: workflow_dispatch 
+jobs:
+  github_actions_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'step1'
+        run : echo "hello do or die"
