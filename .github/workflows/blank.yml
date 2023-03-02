@@ -1,10 +1,10 @@
-name: CI
-on: workflow_dispatch 
-jobs:
-  github_actions_test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'step1'
-        run : git clone https://github.com/RavitejKona/retool-onpremise.git
-      - name : check
-        run: rm -rf retool-onpremise
+# name: CI
+# on: workflow_dispatch 
+# jobs:
+#   github_actions_test:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: 'step1'
+#         run : git clone https://github.com/RavitejKona/retool-onpremise.git
+#       - name : check
+#         run: rm -rf retool-onpremise
