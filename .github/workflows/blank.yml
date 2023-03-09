@@ -52,10 +52,10 @@ jobs:
             Conclusion: ${{ job.conclusion }}
 
             Steps:
-            - Checkout code: ${{ job.steps.checkout_code.status }}
-            - Run one-line script: ${{ job.steps.run_one_line_script.status }}
-            - Run multi-line script: ${{ job.steps.run_multi_line_script.status }}
-            - Upload artifact: ${{ job.steps.upload_artifact.status }}
+            - Checkout code: ${{ job.steps.checkout code.outcome }}
+            - Run one-line script: ${{ job.steps.run one-line script.outcome }}
+            - Run multi-line script: ${{ job.steps.run multi-line script.outcome }}
+            - Upload artifact: ${{ job.steps.upload artifact.outcome }}
 
             # Job test2:
             # Status: ${{ job.status_2 }}
