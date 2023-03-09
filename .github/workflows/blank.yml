@@ -8,11 +8,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-notify:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
       - name: Run one-line script
         run: echo "Hello, world!"
         continue-on-error: true
@@ -26,9 +28,10 @@ jobs:
         with:
           name: my-artifact
           path: my-artifact
+
       - name: Send email notification
-        if: always()
         uses: dawidd6/action-send-mail@v3
+        if: always()
         with:
           server_address: smtp-relay.sendinblue.com
           server_port: 587
@@ -45,7 +48,7 @@ jobs:
             Conclusion: ${{ job.conclusion }}
 
             Steps:
-            - Checkout code: ${{ success_or_failure_expression: job.steps['Checkout code'].outcome, default: 'Failed' }}
-            - Run one-line script: ${{ success_or_failure_expression: job.steps['Run one-line script'].outcome, default: 'Failed' }}
-            - Run multi-line script: ${{ success_or_failure_expression: job.steps['Run multi-line script'].outcome, default: 'Failed' }}
-            - Upload artifact: ${{ success_or_failure_expression: job.steps['Upload artifact'].outcome, default: 'Failed' }}            
+            - Checkout code: ${{ job.steps['Checkout code'].outcome == 'success' && 'Success' || 'Failed' }}
+            - Run one-line script: ${{ job.steps['Run one-line script'].outcome == 'success' && 'Success' || 'Failed' }}
+            - Run multi-line script: ${{ job.steps['Run multi-line script'].outcome == 'success' && 'Success' || 'Failed' }}
+            - Upload artifact: ${{ job.steps['Upload artifact'].outcome == 'success' && 'Success' || 'Failed' }}
