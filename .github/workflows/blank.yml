@@ -48,14 +48,26 @@ jobs:
             Test results for ${{ github.repository }}:
 
             Job build:
-            Status: ${{ job.build.status }}
+            Status: ${{ job.status }}
             Conclusion: ${{ job.conclusion }}
 
             Steps:
-            - Checkout code: ${{ job.build.steps['Checkout code'].outcome }}
-            - Run one-line script: ${{ job.steps['Run one-line script'].outcome }}
-            - Run multi-line script: ${{ job.steps['Run multi-line script'].outcome }}
-            - Upload artifact: ${{ job.steps['Upload artifact'].outcome }}
+            - Checkout code: ${{
+                success: "Success",
+                failure: "Failed"
+              }[${{ job.steps['Checkout code'].outcome }}]}
+            - Run one-line script: ${{
+                success: "Success",
+                failure: "Failed"
+              }[${{ job.steps['Run one-line script'].outcome }}]}
+            - Run multi-line script: ${{
+                success: "Success",
+                failure: "Failed"
+              }[${{ job.steps['Run multi-line script'].outcome }}]}
+            - Upload artifact: ${{
+                success: "Success",
+                failure: "Failed"
+              }[${{ job.steps['Upload artifact'].outcome }}]}
 
             # Job test2:
             # Status: ${{ job.status_2 }}
