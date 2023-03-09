@@ -29,46 +29,46 @@ jobs:
           name: my-artifact
           path: my-artifact
 
-  send_notification:
-    runs-on: ubuntu-latest
-    needs: build
-    if: always()
-    steps:
-      - name: Send email notification
-        uses: dawidd6/action-send-mail@v3
-        with:
-          server_address: smtp-relay.sendinblue.com
-          server_port: 587
-          username: ${{ secrets.EMAIL_USERNAME }}
-          password: ${{ secrets.EMAIL_PASSWORD }}
-          from: konavvart@gmail.com
-          to: kvvaravitej@gmail.com
-          subject: ${{ github.repository }} test results
-          body: |
-            Test results for ${{ github.repository }}:
+      - name: send_notification:
+#           runs-on: ubuntu-latest
+#           needs: build
+          if: always()
+          steps:
+            - name: Send email notification
+              uses: dawidd6/action-send-mail@v3
+              with:
+                server_address: smtp-relay.sendinblue.com
+                server_port: 587
+                username: ${{ secrets.EMAIL_USERNAME }}
+                password: ${{ secrets.EMAIL_PASSWORD }}
+                from: konavvart@gmail.com
+                to: kvvaravitej@gmail.com
+                subject: ${{ github.repository }} test results
+                body: |
+                  Test results for ${{ github.repository }}:
 
-            Job build:
-            Status: ${{ job.status }}
-            Conclusion: ${{ job.conclusion }}
+                  Job build:
+                  Status: ${{ job.status }}
+                  Conclusion: ${{ job.conclusion }}
 
-            Steps:
-            - Checkout code: ${{
-                success: "Success",
-                failure: "Failed"
-              }[${{ job.steps['Checkout code'].outcome }}]}
-            - Run one-line script: ${{
-                success: "Success",
-                failure: "Failed"
-              }[${{ job.steps['Run one-line script'].outcome }}]}
-            - Run multi-line script: ${{
-                success: "Success",
-                failure: "Failed"
-              }[${{ job.steps['Run multi-line script'].outcome }}]}
-            - Upload artifact: ${{
-                success: "Success",
-                failure: "Failed"
-              }[${{ job.steps['Upload artifact'].outcome }}]}
+                  Steps:
+                  - Checkout code: ${{
+                      success: "Success",
+                      failure: "Failed"
+                    }[${{ job.steps['Checkout code'].outcome }}]}
+                  - Run one-line script: ${{
+                      success: "Success",
+                      failure: "Failed"
+                    }[${{ job.steps['Run one-line script'].outcome }}]}
+                  - Run multi-line script: ${{
+                      success: "Success",
+                      failure: "Failed"
+                    }[${{ job.steps['Run multi-line script'].outcome }}]}
+                  - Upload artifact: ${{
+                      success: "Success",
+                      failure: "Failed"
+                    }[${{ job.steps['Upload artifact'].outcome }}]}
 
-            # Job test2:
-            # Status: ${{ job.status_2 }}
-            # Conclusion: ${{ job.conclusion_2 }}'
+                  # Job test2:
+                  # Status: ${{ job.status_2 }}
+                  # Conclusion: ${{ job.conclusion_2 }}'
