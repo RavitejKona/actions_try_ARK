@@ -52,8 +52,7 @@ jobs:
             Status: ${{ job.status }}
             Conclusion: ${{ job.conclusion }}
             
-            steps:
-             Run a multi-line script: ${{ job.steps.Run a multi-line script }}
+            
 
 
             # Job test2:
