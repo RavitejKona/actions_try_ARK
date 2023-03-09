@@ -48,7 +48,7 @@ jobs:
             Conclusion: ${{ job.conclusion }}
 
             Steps:
-            - Checkout code: ${{ job.steps['Checkout code'].outcome == 'success' ? 'Success' || 'Failed' }}
-            - Run one-line script: ${{ job.steps['Run one-line script'].outcome == 'success' ? 'Success' || 'Failed' }}
-            - Run multi-line script: ${{ job.steps['Run multi-line script'].outcome == 'success' ? 'Success' || 'Failed' }}
-            - Upload artifact: ${{ job.steps['Upload artifact'].outcome == 'success' ? 'Success' || 'Failed' }}
+            - Checkout code: ${{ job.steps['Checkout code'].outcome == 'success' ? 'Success' : 'Failed' }}
+            - Run one-line script: ${{ job.steps['Run one-line script'].outcome == 'success' ? 'Success' : 'Failed' }}
+            - Run multi-line script: ${{ job.steps['Run multi-line script'].outcome == 'success' ? 'Success' : 'Failed' }}
+            - Upload artifact: ${{ job.steps['Upload artifact'].outcome == 'success' ? 'Success' : 'Failed' }}
