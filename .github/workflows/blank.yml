@@ -32,9 +32,10 @@ jobs:
         with:
           server_address: smtp.gmail.com
           server_port: 587
-          username: konavvart@gmail.com
-          password: Npnt7D5cAOWQzsyY
+          SENDGRID_API_KEY: ${{ SENDGRID_API_KEY }}
+#           username: konavvart@gmail.com
+#           password: Npnt7D5cAOWQzsyY
           subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
           body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
-          from: smtp-relay.sendinblue.com
+          from: konavvart@gmail.com
           to: konavvart@gmail.com
