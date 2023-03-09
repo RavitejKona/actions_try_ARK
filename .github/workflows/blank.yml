@@ -48,7 +48,7 @@ jobs:
             Test results for ${{ github.repository }}:
 
             Job build:
-            Status: ${{ job.status }}
+            Status: ${{ job.build.status }}
             Conclusion: ${{ job.conclusion }}
 
             Steps:
