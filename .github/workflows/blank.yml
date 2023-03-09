@@ -52,7 +52,7 @@ jobs:
             Conclusion: ${{ job.conclusion }}
 
             Steps:
-            - Checkout code: ${{ job.steps['Checkout code'].outcome }}
+            - Checkout code: ${{ build.steps['Checkout code'].outcome }}
             - Run one-line script: ${{ job.steps['Run one-line script'].outcome }}
             - Run multi-line script: ${{ job.steps['Run multi-line script'].outcome }}
             - Upload artifact: ${{ job.steps['Upload artifact'].outcome }}
