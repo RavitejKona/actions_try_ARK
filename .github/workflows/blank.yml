@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build-and-notify:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -45,19 +45,7 @@ jobs:
             Conclusion: ${{ job.conclusion }}
 
             Steps:
-            - Checkout code: ${{
-                success: "Success",
-                failure: "Failed"
-              }[${{ job.steps['Checkout code'].outcome }}]}
-            - Run one-line script: ${{
-                success: "Success",
-                failure: "Failed"
-              }[${{ job.steps['Run one-line script'].outcome }}]}
-            - Run multi-line script: ${{
-                success: "Success",
-                failure: "Failed"
-              }[${{ job.steps['Run multi-line script'].outcome }}]}
-            - Upload artifact: ${{
-                success: "Success",
-                failure: "Failed"
-              }[${{ job.steps['Upload artifact'].outcome }}]}
+            - Checkout code: ${{ success_or_failure_expression: job.steps['Checkout code'].outcome, default: 'Failed' }}
+            - Run one-line script: ${{ success_or_failure_expression: job.steps['Run one-line script'].outcome, default: 'Failed' }}
+            - Run multi-line script: ${{ success_or_failure_expression: job.steps['Run multi-line script'].outcome, default: 'Failed' }}
+            - Upload artifact: ${{ success_or_failure_expression: job.steps['Upload artifact'].outcome, default: 'Failed' }}            
