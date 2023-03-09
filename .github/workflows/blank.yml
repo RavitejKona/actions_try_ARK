@@ -30,12 +30,11 @@ jobs:
       - name: Send email notification
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: smtp.gmail.com
+          server_address: smtp.sendgrid.net
           server_port: 587
-#           SENDGRID_API_KEY: ${{ SENDGRID_API_KEY }}
-          username: konavvart@gmail.com
-          password: ${{ SENDGRID_API_KEY }
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.SENDGRID_API_KEY }}
           subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
           body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
-          from: smtp.sendgrid.net
-          to: konavvart@gmail.com
+          from: konavvart@gmail.com
+          to: kvvaravitej@gmail.com
