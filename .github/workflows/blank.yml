@@ -17,12 +17,12 @@ jobs:
           ref: ${{ github.ref }}
       - name: Run one-line script
         run: echo "Hello, world!"
-#         continue-on-error: true
+        continue-on-error: true
       - name: Run multi-line script
         run: |
           echo "Add other actions to build,"
           echo "test, and deploy your project."
-#         continue-on-error: true
+        continue-on-error: true
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
@@ -52,10 +52,10 @@ jobs:
             Conclusion: ${{ job.conclusion }}
 
             Steps:
-            - Checkout code: ${{ job.steps.checkout code.outcome }}
-            - Run one-line script: ${{ job.steps.run one-line script.outcome }}
-            - Run multi-line script: ${{ job.steps.run multi-line script.outcome }}
-            - Upload artifact: ${{ job.steps.upload artifact.outcome }}
+            - Checkout code: ${{ job.steps['Checkout code'].outcome }}
+            - Run one-line script: ${{ job.steps['Run one-line script'].outcome }}
+            - Run multi-line script: ${{ job.steps['Run multi-line script'].outcome }}
+            - Upload artifact: ${{ job.steps['Upload artifact'].outcome }}
 
             # Job test2:
             # Status: ${{ job.status_2 }}
