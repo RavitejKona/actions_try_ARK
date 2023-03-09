@@ -37,5 +37,5 @@ jobs:
           password: ${{ SENDGRID_API_KEY }
           subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
           body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
-          from: konavvart@gmail.com
+          from: smtp.sendgrid.net
           to: konavvart@gmail.com
