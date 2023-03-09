@@ -36,5 +36,5 @@ jobs:
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
           body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
-          from: email-smtp.us-east-1.amazonaws.com
-          to: bitssaraswathi@gmail.com
+          from: smtp-relay.sendinblue.com
+          to: konavvart@gmail.com
